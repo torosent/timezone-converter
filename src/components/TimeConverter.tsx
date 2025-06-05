@@ -366,53 +366,51 @@ const TimeConverter: React.FC = () => {
         </div>
         
         <div className="space-y-4">
-          <div className="flex flex-col lg:flex-row gap-4">
-            <div className="flex-1 relative">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Date/Time Input
-              </label>
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => handleInputChange(e.target.value)}
-                placeholder="Enter any date/time format... (e.g., 'now', '2023-12-25', 'tomorrow at 3pm')"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-              />
-              <div className="absolute right-2 top-9 flex gap-1">
-                <button
-                  onClick={insertCurrentTime}
-                  disabled={!currentTime}
-                  className="p-1 text-gray-400 hover:text-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  title="Insert current time"
-                >
-                  <Sparkles className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={clearInput}
-                  className="p-1 text-gray-400 hover:text-red-500 transition-colors"
-                  title="Clear input"
-                >
-                  <RefreshCw className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-            
-            <div className="lg:w-64 w-full">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Input Timezone
-              </label>
-              <select
-                value={timezone}
-                onChange={(e) => setTimezone(e.target.value)}
-                className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white text-sm"
+          <div className="relative">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Date/Time Input
+            </label>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => handleInputChange(e.target.value)}
+              placeholder="Enter any date/time format... (e.g., 'now', '2023-12-25', 'tomorrow at 3pm')"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+            />
+            <div className="absolute right-2 top-9 flex gap-1">
+              <button
+                onClick={insertCurrentTime}
+                disabled={!currentTime}
+                className="p-1 text-gray-400 hover:text-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Insert current time"
               >
-                {timezones.map((tz) => (
-                  <option key={tz.value} value={tz.value}>
-                    {tz.label}
-                  </option>
-                ))}
-              </select>
+                <Sparkles className="w-4 h-4" />
+              </button>
+              <button
+                onClick={clearInput}
+                className="p-1 text-gray-400 hover:text-red-500 transition-colors"
+                title="Clear input"
+              >
+                <RefreshCw className="w-4 h-4" />
+              </button>
             </div>
+          </div>
+          
+          <div className="w-full">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Input Timezone
+            </label>
+            <select
+              value={timezone}
+              onChange={(e) => setTimezone(e.target.value)}
+              className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white text-sm"
+            >
+              {timezones.map((tz) => (
+                <option key={tz.value} value={tz.value}>
+                  {tz.label}
+                </option>
+              ))}
+            </select>
           </div>
 
           {/* Sample inputs */}
